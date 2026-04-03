@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="T.H. Larsen Publishing — Non-fiction, fiction, and specialist titles from Thor-Håkon Larsen." />
+  <title>T.H. Larsen Publishing</title>
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="T.H. Larsen Publishing" />
+  <meta property="og:url" content="https://thlarsenpublishing.com" />
+  <meta property="og:title" content="T.H. Larsen Publishing — Ideas Worth Reading" />
+  <meta property="og:description" content="Non-fiction, fiction, and specialist titles from Thor-Håkon Larsen." />
+  <meta property="og:image" content="https://thlarsenpublishing.com/assets/og/og_the-replacement-ladder.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="The Replacement Ladder — T.H. Larsen Publishing" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="T.H. Larsen Publishing — Ideas Worth Reading" />
+  <meta name="twitter:description" content="Non-fiction, fiction, and specialist titles from Thor-Håkon Larsen." />
+  <meta name="twitter:image" content="https://thlarsenpublishing.com/assets/og/og_the-replacement-ladder.png" />
+
+  <!-- Per-book OG images (used by book-specific share links) -->
+  <!-- The Replacement Ladder: /assets/og/og_the-replacement-ladder.png -->
+  <!-- The Expert's Book:       /assets/og/og_the-experts-book.png -->
+  <!-- Et Skarpere Sinn:        /assets/og/og_et-skarpere-sinn.png -->
+  <!-- Bryteren:                /assets/og/og_bryteren.png -->
+  <!-- Sfærene:                 /assets/og/og_sfaerene.png -->
+  <!-- Vekterfaget:             /assets/og/og_vekterfaget.png -->
+  <!-- AI for Øk.:              /assets/og/og_ai-for-okonomifunksjonen.png -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "T.H. Larsen Publishing",
+    "url": "https://thlarsenpublishing.com",
+    "description": "Independent publisher specializing in business, personal development, and Norwegian fiction",
+    "founder": {"@type": "Person", "name": "T.H. Larsen"},
+    "knowsAbout": ["Business books", "AI and automation", "Norwegian fiction", "Personal development"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "The Replacement Ladder",
+      "description": "The Blueprint to Automating Your Life, Cloning Your Mind, and Scaling Without Burnout",
+      "inLanguage": "en",
+      "genre": "Business",
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "The Expert's Book",
+      "description": "The definitive guide to turning deep expertise into influence, income, and impact",
+      "inLanguage": "en",
+      "genre": "Business",
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Et Skarpere Sinn",
+      "description": "Train your brain to think faster, decide better, and perform under pressure",
+      "inLanguage": "no",
+      "genre": "Business",
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Bryteren",
+      "description": "2029. En algoritme begynner å ta beslutninger mennesker ikke lenger forstår.",
+      "inLanguage": "no",
+      "genre": "Fiction",
+      "isPartOf": {
+        "@type": "BookSeries",
+        "name": "Den delte verden",
+        "position": 1
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Sfærene",
+      "description": "The second instalment of the Divided World Trilogy.",
+      "inLanguage": "no",
+      "genre": "Fiction",
+      "isPartOf": {
+        "@type": "BookSeries",
+        "name": "Den delte verden",
+        "position": 2
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Vekterfaget",
+      "description": "Den komplette fagboken for vekterutdanning — juridisk verifisert mot norsk lov",
+      "inLanguage": "no",
+      "genre": "Fagbok",
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "AI for økonomifunksjonen",
+      "description": "Hvordan kunstig intelligens transformerer regnskap, analyse og beslutninger",
+      "inLanguage": "no",
+      "genre": "Fagbok",
+      "publisher": {
+        "@type": "Organization",
+        "name": "T.H. Larsen Publishing"
+      }
+    }
+  ]
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "T.H. Larsen Publishing",
+    "url": "https://thlarsenpublishing.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://thlarsenpublishing.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="T.H. Larsen Publishing — Home">
+        <span class="logo-name">T.H. LARSEN</span>
+        <span class="logo-sub">PUBLISHING</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#catalogue" class="nav-link">Books</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">T.H. Larsen Publishing</p>
+        <h1 class="hero-headline">Ideas<br><em>Worth Reading.</em></h1>
+        <p class="hero-sub">Non-fiction, fiction, and specialist titles<br class="br-desktop"> from Thor-Håkon Larsen.</p>
+        <a href="#catalogue" class="btn btn--gold">Browse the Catalogue</a>
+      </div>
+      <div class="hero-rule" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================================================
+         CATALOGUE
+    ============================================================ -->
+    <section class="section catalogue" id="catalogue">
+      <div class="container">
+
+        <header class="section-header">
+          <p class="section-label">The Catalogue</p>
+          <h2 class="section-title">All Titles</h2>
+        </header>
+
+        <!-- Category 1: Business & Non-Fiction -->
+        <div class="category-block">
+          <h3 class="category-heading">
+            <span>Business &amp; Non-Fiction</span>
+            <span class="category-lang">English</span>
+          </h3>
+
+          <div class="book-grid">
+
+            <!-- The Replacement Ladder -->
+            <article class="book-card">
+              <div class="book-cover book-cover--1" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-title">The Replacement Ladder</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Business</span>
+                  <span class="badge badge--available">Available</span>
+                </div>
+                <h4 class="book-title">The Replacement Ladder</h4>
+                <p class="book-subtitle">The Blueprint to Automating Your Life, Cloning Your Mind, and Scaling Without Burnout</p>
+                <p class="book-note">Coming May 27, 2026</p>
+                <a href="#" class="btn btn--outline btn--sm">Order on Amazon</a>
+              </div>
+            </article>
+
+            <!-- The Expert's Book -->
+            <article class="book-card">
+              <div class="book-cover book-cover--2" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-title">The Expert's Book</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Business</span>
+                  <span class="badge badge--available">Available</span>
+                </div>
+                <h4 class="book-title">The Expert's Book</h4>
+                <p class="book-subtitle">The definitive guide to turning deep expertise into influence, income, and impact</p>
+                <a href="#" class="btn btn--outline btn--sm">Order on Amazon</a>
+              </div>
+            </article>
+
+            <!-- Et Skarpere Sinn -->
+            <article class="book-card">
+              <div class="book-cover book-cover--3" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-title">Et Skarpere Sinn</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Business</span>
+                  <span class="badge badge--soon">Coming Soon</span>
+                </div>
+                <h4 class="book-title">Et Skarpere Sinn <em>(A Sharper Mind)</em></h4>
+                <p class="book-subtitle">Train your brain to think faster, decide better, and perform under pressure</p>
+                <a href="#contact" class="btn btn--ghost btn--sm">Notify Me</a>
+              </div>
+            </article>
+
+          </div><!-- /book-grid -->
+        </div><!-- /category-block -->
+
+        <!-- Category 2: Fiction Trilogy -->
+        <div class="category-block">
+          <h3 class="category-heading">
+            <span>Fiction — The Divided World Trilogy</span>
+            <span class="category-lang">Norsk</span>
+          </h3>
+
+          <div class="book-grid book-grid--two">
+
+            <!-- Bryteren -->
+            <article class="book-card">
+              <div class="book-cover book-cover--4" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-series">Den delte verden · Bok 1</span>
+                  <span class="cover-title">Bryteren</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Fiction</span>
+                  <span class="badge badge--available">Available</span>
+                </div>
+                <h4 class="book-title">Bryteren <em>(Kill Switch)</em></h4>
+                <p class="book-series">Den delte verden | Bok 1</p>
+                <p class="book-subtitle">2029. En algoritme begynner å ta beslutninger mennesker ikke lenger forstår.</p>
+                <a href="#" class="btn btn--outline btn--sm">Order on Amazon</a>
+              </div>
+            </article>
+
+            <!-- Sfærene -->
+            <article class="book-card">
+              <div class="book-cover book-cover--5" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-series">Den delte verden · Bok 2</span>
+                  <span class="cover-title">Sfærene</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Fiction</span>
+                  <span class="badge badge--soon">Coming Soon</span>
+                </div>
+                <h4 class="book-title">Sfærene <em>(The Spheres)</em></h4>
+                <p class="book-series">Den delte verden | Bok 2</p>
+                <p class="book-subtitle">The second instalment of the Divided World Trilogy.</p>
+                <a href="#contact" class="btn btn--ghost btn--sm">Notify Me</a>
+              </div>
+            </article>
+
+          </div><!-- /book-grid -->
+        </div><!-- /category-block -->
+
+        <!-- Category 3: Norwegian Non-Fiction -->
+        <div class="category-block">
+          <h3 class="category-heading">
+            <span>Norsk faglitteratur</span>
+            <span class="category-lang">Norsk</span>
+          </h3>
+
+          <div class="book-grid book-grid--two">
+
+            <!-- Vekterfaget -->
+            <article class="book-card">
+              <div class="book-cover book-cover--6" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-title">Vekterfaget</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Fagbok</span>
+                  <span class="badge badge--soon">Coming Soon</span>
+                </div>
+                <h4 class="book-title">Vekterfaget</h4>
+                <p class="book-subtitle">Den komplette fagboken for vekterutdanning — juridisk verifisert mot norsk lov</p>
+                <a href="#contact" class="btn btn--ghost btn--sm">Notify Me</a>
+              </div>
+            </article>
+
+            <!-- AI for økonomifunksjonen -->
+            <article class="book-card">
+              <div class="book-cover book-cover--7" aria-hidden="true">
+                <div class="cover-inner">
+                  <span class="cover-title">AI for økonomi&shy;funksjonen</span>
+                </div>
+              </div>
+              <div class="book-info">
+                <div class="book-meta">
+                  <span class="tag">Fagbok</span>
+                  <span class="badge badge--soon">Coming Soon</span>
+                </div>
+                <h4 class="book-title">AI for økonomifunksjonen</h4>
+                <p class="book-subtitle">Hvordan kunstig intelligens transformerer regnskap, analyse og beslutninger</p>
+                <a href="#contact" class="btn btn--ghost btn--sm">Notify Me</a>
+              </div>
+            </article>
+
+          </div><!-- /book-grid -->
+        </div><!-- /category-block -->
+
+      </div><!-- /container -->
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section class="section about" id="about">
+      <div class="container about-inner">
+        <div class="about-portrait" aria-hidden="true">
+          <div class="portrait-placeholder">
+            <span>THL</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <p class="section-label">About the Author</p>
+          <h2 class="section-title">Thor-Håkon Larsen</h2>
+          <p class="about-bio">Thor-Håkon Larsen is a Norwegian author, economist, and entrepreneur whose work sits at the intersection of business strategy, human performance, and emerging technology. Drawing on a career built across finance, operational management, and digital ventures, he writes with the rare combination of analytical rigour and narrative clarity.</p>
+          <p class="about-bio">His non-fiction titles — spanning productivity, expertise, and artificial intelligence — have earned praise for their practical depth and uncompromising focus on results. In parallel, his speculative fiction trilogy <em>Den delte verden</em> explores a near-future Norway grappling with algorithmic authority and the quiet dissolution of human agency.</p>
+          <p class="about-bio">Larsen believes that the best books do one thing: they change how you think. Everything published under the T.H. Larsen imprint is held to that single standard.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EMAIL SIGNUP
+    ============================================================ -->
+    <section class="section signup" id="contact">
+      <div class="container signup-inner">
+        <div class="signup-text">
+          <p class="section-label section-label--light">Stay Informed</p>
+          <h2 class="section-title section-title--light">New releases. Writing notes.<br>Early access.</h2>
+          <p class="signup-sub">Join the mailing list for publication announcements, behind-the-scenes writing dispatches, and first access to new titles. No noise — only signal.</p>
+        </div>
+        <form class="signup-form" id="signup-form" action="#" method="post" novalidate>
+          <div class="form-row">
+            <label for="email" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="Your email address"
+              required
+              autocomplete="email"
+            />
+            <button type="submit" class="btn btn--gold">Subscribe</button>
+          </div>
+          <p class="form-note">No spam. Unsubscribe at any time.</p>
+          <p class="form-success" id="form-success" aria-live="polite" hidden>Thank you — you're on the list.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo nav-logo--footer" aria-label="T.H. Larsen Publishing">
+          <span class="logo-name">T.H. LARSEN</span>
+          <span class="logo-sub">PUBLISHING</span>
+        </a>
+        <p class="footer-tagline">Ideas worth reading.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#catalogue">Books</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <p class="footer-legal">
+        &copy; 2026 T.H. Larsen Publishing &middot;
+        <a href="https://thlarsenpublishing.com" target="_blank" rel="noopener">thlarsenpublishing.com</a>
+        &middot; ISBN: Pending
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THL War Room</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d0d0f;--gold:#c9a84c;--light:#f5f0e8;--dim:rgba(245,240,232,0.45);--card:rgba(255,255,255,0.04);--border:rgba(201,168,76,0.18);--sidebar:200px}
+body{background:var(--bg);color:var(--light);font-family:'DM Sans',sans-serif;font-size:13px;display:flex;height:100vh;overflow:hidden}
+h1,h2,.serif{font-family:'Cormorant Garamond',serif}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar);min-width:var(--sidebar);background:rgba(201,168,76,0.04);border-right:1px solid var(--border);padding:20px 14px;display:flex;flex-direction:column;gap:12px}
+.sidebar-title{font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:4px}
+.agent{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:10px 12px;display:flex;align-items:center;gap:8px}
+.agent-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;animation:pulse 2s infinite}
+.agent-name{font-size:11px;font-weight:600;letter-spacing:1px}
+.agent-sub{font-size:10px;color:var(--dim)}
+.dot-orange{background:#f97316;box-shadow:0 0 8px #f97316}
+.dot-purple{background:#a855f7;box-shadow:0 0 8px #a855f7}
+.dot-amber{background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.dot-green{background:#22c55e;box-shadow:0 0 8px #22c55e}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+/* MAIN */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* HEADER */
+header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-shrink:0}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:700;color:var(--gold);letter-spacing:3px;margin-right:auto}
+.nav{display:flex;gap:4px}
+.nav-tab{background:none;border:1px solid transparent;color:var(--dim);padding:5px 12px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:12px;transition:.2s}
+.nav-tab.active,.nav-tab:hover{color:var(--light);border-color:var(--border);background:var(--card)}
+.nav-tab.active{color:var(--gold);border-color:var(--gold)}
+.status-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;animation:pulse 2s infinite}
+#clock{font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;min-width:110px}
+.sync-btn{background:none;border:1px solid var(--border);color:var(--gold);padding:5px 12px;border-radius:4px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;transition:.2s}
+.sync-btn:hover{background:var(--gold);color:var(--bg)}
+
+/* CONTENT AREA */
+.content{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+
+/* KPI ROW */
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.kpi-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.kpi-value{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--gold)}
+.kpi-sub{font-size:10px;color:var(--dim);margin-top:2px}
+
+/* AD GRID */
+.section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
+.ad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ad-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.ad-title{font-family:'Cormorant Garamond',serif;font-size:14px;font-weight:600;color:var(--light);margin-bottom:8px;line-height:1.2}
+.ad-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.pill{font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:10px;font-weight:600}
+.pill-active{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.3)}
+.pill-paused{background:rgba(156,163,175,.12);color:#9ca3af;border:1px solid rgba(156,163,175,.25)}
+.pill-learning{background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25)}
+.badge{font-size:9px;letter-spacing:.5px;padding:2px 6px;border-radius:3px;font-weight:600}
+.badge-scraper{background:rgba(249,115,22,.18);color:#fb923c}
+.badge-forge{background:rgba(168,85,247,.18);color:#c084fc}
+.badge-publisher{background:rgba(201,168,76,.18);color:var(--gold)}
+.badge-looper{background:rgba(34,197,94,.18);color:#4ade80}
+.ad-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px}
+.stat{text-align:center}
+.stat-val{font-size:13px;font-weight:600;color:var(--light)}
+.stat-key{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+
+/* TERMINAL */
+.terminal{background:rgba(0,0,0,.5);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-family:monospace;font-size:11px;height:100px;overflow-y:auto;flex-shrink:0}
+#log{display:flex;flex-direction:column;gap:2px}
+.log-line{color:rgba(34,197,94,.8)}
+.log-line span{color:var(--dim);margin-right:6px}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-title">Active Agents</div>
+  <div class="agent">
+    <span class="agent-dot dot-orange"></span>
+    <div>
+      <div class="agent-name" style="color:#fb923c">SCRAPER</div>
+      <div class="agent-sub">Market intel</div>
+    </div>
+  </div>
+  <div class="agent">
+    <span class="agent-dot dot-purple"></span>
+    <div>
+      <div class="agent-name" style="color:#c084fc">FORGE</div>
+      <div class="agent-sub">Ad creation</div>
+    </div>
+  </div>
+  <div class="agent">
+    <span class="agent-dot dot-amber"></span>
+    <div>
+      <div class="agent-name" style="color:var(--gold)">PUBLISHER</div>
+      <div class="agent-sub">Deploying</div>
+    </div>
+  </div>
+  <div class="agent">
+    <span class="agent-dot dot-green"></span>
+    <div>
+      <div class="agent-name" style="color:#4ade80">LOOPER</div>
+      <div class="agent-sub">Optimizing</div>
+    </div>
+  </div>
+</aside>
+
+<div class="main">
+  <header>
+    <div class="logo">THL WAR ROOM</div>
+    <nav class="nav">
+      <button class="nav-tab active">Overview</button>
+      <button class="nav-tab">Campaigns</button>
+      <button class="nav-tab">Creatives</button>
+      <button class="nav-tab">Agents</button>
+    </nav>
+    <span class="status-dot"></span>
+    <span id="clock"></span>
+    <button class="sync-btn" onclick="syncNow()">SYNC</button>
+  </header>
+
+  <div class="content">
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">Total Spend</div><div class="kpi-value" data-target="24300" data-prefix="kr ">kr 0</div><div class="kpi-sub">This month</div></div>
+      <div class="kpi"><div class="kpi-label">Revenue</div><div class="kpi-value" data-target="187400" data-prefix="kr ">kr 0</div><div class="kpi-sub">Attributed</div></div>
+      <div class="kpi"><div class="kpi-label">ROAS</div><div class="kpi-value" data-target="77" data-suffix="x" data-decimal="1">0x</div><div class="kpi-sub">Blended</div></div>
+      <div class="kpi"><div class="kpi-label">Active Ads</div><div class="kpi-value" data-target="7">0</div><div class="kpi-sub">Running now</div></div>
+      <div class="kpi"><div class="kpi-label">Conversions</div><div class="kpi-value" data-target="1247">0</div><div class="kpi-sub">All time</div></div>
+    </div>
+
+    <div class="section-label">Ad Performance — All Books</div>
+    <div class="ad-grid" id="adGrid"></div>
+
+    <div class="terminal"><div id="log"></div></div>
+  </div>
+</div>
+
+<script>
+// Clock
+function tick(){
+  const now=new Date();
+  document.getElementById('clock').textContent=
+    now.toLocaleDateString('no-NO',{day:'2-digit',month:'short',year:'numeric'})+' '+
+    now.toLocaleTimeString('no-NO',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+tick(); setInterval(tick,1000);
+
+// Nav tabs
+document.querySelectorAll('.nav-tab').forEach(t=>t.addEventListener('click',function(){
+  document.querySelectorAll('.nav-tab').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active');
+}));
+
+// KPI counters
+function animateCounters(){
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const target=+el.dataset.target;
+    const prefix=el.dataset.prefix||'';
+    const suffix=el.dataset.suffix||'';
+    const decimal=el.dataset.decimal?1:0;
+    const dur=1400,steps=60,inc=target/steps;
+    let cur=0,i=0;
+    const t=setInterval(()=>{
+      cur=Math.min(cur+inc,target); i++;
+      const v=decimal?(cur/10).toFixed(1):Math.round(cur).toLocaleString('no-NO');
+      el.textContent=prefix+v+suffix;
+      if(i>=steps)clearInterval(t);
+    },dur/steps);
+  });
+}
+
+// Ad data
+const books=[
+  {t:'The Replacement Ladder',s:'active',roas:9.2,ctr:4.1,spend:4200,badge:'SCRAPER'},
+  {t:'The Expert\'s Book',s:'active',roas:7.8,ctr:3.6,spend:3800,badge:'FORGE'},
+  {t:'Et Skarpere Sinn',s:'active',roas:6.4,ctr:3.2,spend:2900,badge:'PUBLISHER'},
+  {t:'Bryteren',s:'active',roas:8.1,ctr:4.8,spend:4100,badge:'LOOPER'},
+  {t:'Sfærene',s:'paused',roas:5.2,ctr:2.1,spend:3200,badge:'SCRAPER'},
+  {t:'Vekterfaget',s:'learning',roas:4.8,ctr:1.9,spend:3100,badge:'FORGE'},
+  {t:'AI for Økonomi',s:'learning',roas:5.6,ctr:2.4,spend:3000,badge:'PUBLISHER'}
+];
+const badgeClass={SCRAPER:'badge-scraper',FORGE:'badge-forge',PUBLISHER:'badge-publisher',LOOPER:'badge-looper'};
+const pillClass={active:'pill-active',paused:'pill-paused',learning:'pill-learning'};
+
+document.getElementById('adGrid').innerHTML=books.map(b=>`
+  <div class="ad-card">
+    <div class="ad-title">${b.t}</div>
+    <div class="ad-meta">
+      <span class="pill ${pillClass[b.s]}">${b.s}</span>
+      <span class="badge ${badgeClass[b.badge]}">${b.badge}</span>
+    </div>
+    <div class="ad-stats">
+      <div class="stat"><div class="stat-val">${b.roas}x</div><div class="stat-key">ROAS</div></div>
+      <div class="stat"><div class="stat-val">${b.ctr}%</div><div class="stat-key">CTR</div></div>
+      <div class="stat"><div class="stat-val">kr ${b.spend.toLocaleString('no-NO')}</div><div class="stat-key">Spend</div></div>
+    </div>
+  </div>`).join('');
+
+// Terminal log
+const msgs=[
+  'SCRAPER — Fetching competitor ad data for "self-help" segment',
+  'LOOPER — A/B variant rotation triggered for Bryteren campaign',
+  'FORGE — Generating 3 new creatives for Et Skarpere Sinn',
+  'PUBLISHER — Deploying updated ad set to Meta Ads Manager',
+  'SCRAPER — Price drop detected: competitor ebook -15% NOK',
+  'LOOPER — Budget reallocation: +kr 200 shifted to Bryteren',
+  'FORGE — Headline test complete — winner: "Din hjerne er ikke ferdig"',
+  'PUBLISHER — Pausing low-CTR variant for Sfærene (1.8% < floor)',
+  'LOOPER — Daily ROAS check: portfolio avg 7.7x — on target',
+  'SCRAPER — New review signal: 4.9★ Replacement Ladder (Goodreads)',
+  'FORGE — Video thumb variant queued for AI for Økonomi',
+  'PUBLISHER — Conversion pixel verified — all 7 books firing'
+];
+const log=document.getElementById('log');
+let msgIdx=0;
+function addLog(){
+  const now=new Date().toLocaleTimeString('no-NO',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  const line=document.createElement('div');
+  line.className='log-line';
+  line.innerHTML=`<span>${now}</span>${msgs[msgIdx%msgs.length]}`;
+  log.appendChild(line);
+  msgIdx++;
+  if(log.children.length>20)log.removeChild(log.firstChild);
+  log.scrollTop=log.scrollHeight;
+}
+// Seed 4 initial lines
+for(let i=0;i<4;i++){msgIdx=i;addLog();}
+msgIdx=4;
+setInterval(addLog,4000);
+
+function syncNow(){
+  const btn=document.querySelector('.sync-btn');
+  btn.textContent='SYNCING…';
+  setTimeout(()=>{btn.textContent='SYNC';addLog();},1200);
+}
+
+// Start counters after short delay
+setTimeout(animateCounters,200);
+</script>
+</body>
+</html>
