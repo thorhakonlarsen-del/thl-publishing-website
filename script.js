@@ -151,7 +151,46 @@
 
 
   /* ---------------------------------------------------------------
-     5. SMOOTH SCROLL OFFSET — account for fixed nav height
+     5. LANGUAGE TOGGLE — EN ↔ NO with localStorage persistence
+     --------------------------------------------------------------- */
+  var langBtn = document.getElementById('lang-toggle');
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+
+    // Update placeholders & button text that use data attributes
+    document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(function (el) {
+      el.placeholder = el.getAttribute('data-placeholder-' + lang);
+    });
+    document.querySelectorAll('[data-text-' + lang + ']').forEach(function (el) {
+      el.textContent = el.getAttribute('data-text-' + lang);
+    });
+
+    // Update aria-label on toggle button
+    if (langBtn) {
+      langBtn.setAttribute('aria-label',
+        lang === 'en' ? 'Bytt til norsk' : 'Switch to English');
+    }
+
+    try { localStorage.setItem('thl-lang', lang); } catch (e) { /* private mode */ }
+  }
+
+  // Restore saved preference, or detect browser locale
+  var saved = null;
+  try { saved = localStorage.getItem('thl-lang'); } catch (e) {}
+  var initial = saved || (navigator.language && navigator.language.startsWith('nb') || navigator.language && navigator.language.startsWith('no') ? 'no' : 'en');
+  setLang(initial);
+
+  if (langBtn) {
+    langBtn.addEventListener('click', function () {
+      var current = document.documentElement.lang;
+      setLang(current === 'en' ? 'no' : 'en');
+    });
+  }
+
+
+  /* ---------------------------------------------------------------
+     6. SMOOTH SCROLL OFFSET — account for fixed nav height
      --------------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {

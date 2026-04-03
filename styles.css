@@ -920,7 +920,41 @@ p { max-width: 68ch; }
 .book-card:nth-child(4) { transition-delay: 0.24s; }
 
 /* ----------------------------------------------------------------
-   13. PRINT
+   13. LANGUAGE TOGGLE
+   ---------------------------------------------------------------- */
+/* Default: English visible, Norwegian hidden */
+html[lang="en"] .t-no { display: none; }
+html[lang="no"] .t-en { display: none; }
+
+.lang-toggle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.lang-toggle:hover {
+  border-color: #c9a84c;
+  background: rgba(201, 168, 76, 0.1);
+}
+
+.scrolled .lang-toggle {
+  border-color: rgba(28, 35, 49, 0.3);
+}
+
+.scrolled .lang-toggle:hover {
+  border-color: #c9a84c;
+}
+
+/* ----------------------------------------------------------------
+   14. PRINT
    ---------------------------------------------------------------- */
 @media print {
   .site-header, .signup, .site-footer { display: none; }
