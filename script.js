@@ -115,10 +115,33 @@
         return;
       }
 
-      // At this point: wire up to Buttondown / Mailchimp / etc.
-      // For now, show the success message.
-      form.querySelector('.form-row').style.display = 'none';
-      success.hidden = false;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Subscribing…';
+
+      fetch('https://api.buttondown.email/v1/subscribers', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Token 6a2991c1-f8e1-48d1-8a26-e38ed48bef4c',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function (res) {
+        if (res.ok || res.status === 409) {
+          // 409 = already subscribed — still show success
+          form.querySelector('.form-row').style.display = 'none';
+          success.hidden = false;
+        } else {
+          throw new Error('subscription failed');
+        }
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+        emailInput.style.outline = '2px solid #c9a84c';
+        setTimeout(function () { emailInput.style.outline = ''; }, 2000);
+      });
     });
   }
 
