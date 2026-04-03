@@ -466,6 +466,15 @@ p { max-width: 68ch; }
 .book-cover--6 { background: linear-gradient(160deg, #2a1e0f 0%, #1a1309 55%, #2a2010 100%); }
 .book-cover--7 { background: linear-gradient(160deg, #0f1f2d 0%, #0a1520 55%, #1a1a2d 100%); }
 
+/* Real cover image */
+.book-cover-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
 /* Decorative cover elements */
 .book-cover::before {
   content: '';
