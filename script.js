@@ -234,4 +234,31 @@
     });
   });
 
+  /* ---------------------------------------------------------------
+     7. LIGHTWEIGHT ANALYTICS — Supabase page_views (no cookies)
+     --------------------------------------------------------------- */
+  (function trackPageView() {
+    if (navigator.doNotTrack === '1') return; /* respect DNT */
+
+    var device = window.innerWidth < 768 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop';
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+
+    fetch(SUPABASE_URL + '/rest/v1/page_views', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON,
+        'Authorization': 'Bearer ' + SUPABASE_ANON,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        path: location.pathname,
+        referrer: document.referrer || null,
+        country: tz,
+        device: device,
+        lang: document.documentElement.lang || 'en'
+      })
+    }).catch(function () { /* silent fail */ });
+  })();
+
 })();
