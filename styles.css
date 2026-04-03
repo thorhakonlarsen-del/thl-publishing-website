@@ -642,6 +642,16 @@ p { max-width: 68ch; }
   justify-content: center;
 }
 
+.author-portrait-img {
+  width: clamp(160px, 22vw, 280px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
 .portrait-placeholder {
   width: clamp(120px, 18vw, 200px);
   aspect-ratio: 1;
