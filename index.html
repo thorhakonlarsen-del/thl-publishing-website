@@ -423,7 +423,7 @@
           <p class="signup-sub t-en">Join the mailing list for publication announcements, behind-the-scenes writing dispatches, and first access to new titles. No noise — only signal.</p>
           <p class="signup-sub t-no">Meld deg på e-postlisten for utgivelsesnyheter, bakgrunnsdispatches fra skrivebordet og førstegangstilgang til nye titler. Ingen støy — bare signal.</p>
         </div>
-        <form class="signup-form" id="signup-form" action="#" method="post" novalidate>
+        <form class="signup-form" id="signup-form" novalidate>
           <div class="form-row">
             <label for="email" class="sr-only"><span class="t-en">Email address</span><span class="t-no">E-postadresse</span></label>
             <input
@@ -446,8 +446,27 @@
           <p class="form-note t-en">No spam. Unsubscribe at any time.</p>
           <p class="form-note t-no">Ingen spam. Avslutt når som helst.</p>
           <p class="form-error" id="form-error" role="alert" hidden></p>
-          <p class="form-success t-en" id="form-success-en" aria-live="polite" hidden>Thank you — you're on the list.</p>
-          <p class="form-success t-no" id="form-success-no" aria-live="polite" hidden>Takk — du er på listen.</p>
+          <!-- Success state: replaces entire form -->
+          <div class="form-success-card t-en" id="form-success-en" aria-live="polite" hidden>
+            <div class="success-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+                <path d="M15 25l6 6 12-13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="success-title">You're on the list.</h3>
+            <p class="success-body">Thank you for subscribing. You'll receive publication announcements, writing notes, and early access to new titles. No noise — only signal.</p>
+          </div>
+          <div class="form-success-card t-no" id="form-success-no" aria-live="polite" hidden>
+            <div class="success-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+                <path d="M15 25l6 6 12-13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="success-title">Du er på listen.</h3>
+            <p class="success-body">Takk for at du abonnerer. Du vil motta utgivelsesnyheter, skrivenotater og tidlig tilgang til nye titler. Ingen støy — bare signal.</p>
+          </div>
         </form>
       </div>
     </section>

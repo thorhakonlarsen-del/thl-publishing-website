@@ -147,7 +147,10 @@
       })
       .then(function (res) {
         if (res.ok || res.status === 409) {
+          /* Hide form inputs and notes, show success card */
           form.querySelector('.form-row').style.display = 'none';
+          var notes = form.querySelectorAll('.form-note');
+          notes.forEach(function (n) { n.style.display = 'none'; });
           var successEl = document.getElementById('form-success-' + lang);
           if (successEl) successEl.hidden = false;
         } else {

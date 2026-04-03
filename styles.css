@@ -808,12 +808,44 @@ p { max-width: 68ch; }
   max-width: none;
 }
 
-.form-success {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+.form-success-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  animation: successFadeIn 0.6s var(--ease-out) both;
+}
+
+.success-icon {
   color: var(--gold);
-  font-style: italic;
-  max-width: none;
+  margin-bottom: 1.25rem;
+  animation: successCheck 0.5s 0.2s var(--ease-out) both;
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: var(--parchment);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.success-body {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(245, 240, 232, 0.55);
+  line-height: 1.75;
+  max-width: 38ch;
+  margin-inline: auto;
+}
+
+@keyframes successFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes successCheck {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 /* ----------------------------------------------------------------
@@ -965,22 +997,25 @@ html[lang="no"] .t-en { display: none; }
   border: 1.5px solid rgba(255, 255, 255, 0.5);
   border-radius: 4px;
   background: transparent;
-  color: inherit;
+  color: var(--parchment);
   cursor: pointer;
-  transition: border-color 0.25s, background 0.25s;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
 }
 
 .lang-toggle:hover {
-  border-color: #c9a84c;
-  background: rgba(201, 168, 76, 0.1);
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.15);
+  color: var(--gold);
 }
 
 .scrolled .lang-toggle {
-  border-color: rgba(28, 35, 49, 0.3);
+  border-color: rgba(245, 240, 232, 0.35);
+  color: var(--parchment);
 }
 
 .scrolled .lang-toggle:hover {
-  border-color: #c9a84c;
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
 /* ----------------------------------------------------------------
