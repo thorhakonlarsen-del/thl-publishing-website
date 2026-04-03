@@ -6,7 +6,8 @@ services:
     staticPublishPath: .
     pullRequestPreviewsEnabled: false
     domains:
-      - thlarsenpublishing.com
+      - thlarsenpublishing.no
+      - www.thlarsenpublishing.no
     headers:
       - path: /*
         name: Cache-Control
