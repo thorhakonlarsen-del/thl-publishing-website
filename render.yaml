@@ -8,8 +8,6 @@ services:
     domains:
       - thlarsenpublishing.com
       - www.thlarsenpublishing.com
-      - thlarsenpublishing.no
-      - www.thlarsenpublishing.no
     headers:
       - path: /*
         name: Cache-Control
