@@ -1319,6 +1319,75 @@ html[lang="no"] .t-en { display: none; }
   display: inline-block;
 }
 
+/* Placeholder cover (coming soon) */
+.book-cover-placeholder {
+  max-width: 280px;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  margin-inline: auto;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, #0a1220 0%, #162035 50%, #0f1b2d 100%);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,240,232,0.06);
+}
+@media (min-width: 768px) {
+  .book-cover-placeholder { max-width: 320px; }
+}
+
+.cover-placeholder-series {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.5);
+}
+
+.cover-placeholder-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 400;
+  color: var(--parchment);
+  line-height: 1.2;
+}
+
+.cover-placeholder-num {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.3);
+}
+
+.cover-placeholder-badge {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-top: 0.5rem;
+}
+
+/* Catalogue-size placeholder (smaller, matches book-cover-img) */
+.book-cover-placeholder--catalogue {
+  max-width: 100%;
+  aspect-ratio: auto;
+  min-height: 320px;
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+
 /* Clickable book cards in catalogue */
 .book-card-link {
   text-decoration: none;
