@@ -1063,6 +1063,10 @@ html[lang="no"] .t-en { display: none; }
   gap: clamp(2rem, 5vw, 3.5rem);
   align-items: start;
 }
+/* Back link spans full width above the 2-col grid */
+.book-hero-inner > .book-back {
+  grid-column: 1 / -1;
+}
 @media (min-width: 768px) {
   .book-hero-inner {
     grid-template-columns: 280px 1fr;
@@ -1074,10 +1078,16 @@ html[lang="no"] .t-en { display: none; }
   }
 }
 
+/* Cover can be a div wrapping img, or an img directly */
 .book-hero-cover {
   width: 100%;
   max-width: 280px;
   margin-inline: auto;
+}
+.book-hero-cover img,
+img.book-hero-cover {
+  width: 100%;
+  height: auto;
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,240,232,0.06);
 }
