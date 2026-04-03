@@ -94,51 +94,55 @@
 
 
   /* ---------------------------------------------------------------
-     4. EMAIL SIGNUP FORM — client-side handling
+     4. EMAIL SIGNUP FORM — Supabase subscriber insert
      --------------------------------------------------------------- */
-  const form    = document.getElementById('signup-form');
-  const success = document.getElementById('form-success');
+  var SUPABASE_URL = 'https://pktmwbuxyzoeodyvxtji.supabase.co';
+  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdG13YnV4eXpvZW9keXZ4dGppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMTU1MDUsImV4cCI6MjA4Nzg5MTUwNX0.qSmnanAOiDhRm-cruF1BxgB2jm8aL44XLBI636i3Rvw';
 
-  if (form && success) {
+  var form = document.getElementById('signup-form');
+
+  if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const emailInput = form.querySelector('#email');
-      const email = emailInput ? emailInput.value.trim() : '';
+      var emailInput = form.querySelector('#email');
+      var email = emailInput ? emailInput.value.trim() : '';
 
       if (!email || !isValidEmail(email)) {
         emailInput.focus();
         emailInput.style.outline = '2px solid #c9a84c';
-        setTimeout(function () {
-          emailInput.style.outline = '';
-        }, 1800);
+        setTimeout(function () { emailInput.style.outline = ''; }, 1800);
         return;
       }
 
-      const submitBtn = form.querySelector('button[type="submit"]');
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var lang = document.documentElement.lang || 'en';
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Subscribing…';
+      submitBtn.textContent = lang === 'no' ? 'Abonnerer…' : 'Subscribing…';
 
-      fetch('https://api.buttondown.email/v1/subscribers', {
+      fetch(SUPABASE_URL + '/rest/v1/subscribers', {
         method: 'POST',
         headers: {
-          'Authorization': 'Token BUTTONDOWN_API_KEY',
-          'Content-Type': 'application/json'
+          'apikey': SUPABASE_ANON,
+          'Authorization': 'Bearer ' + SUPABASE_ANON,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
         },
-        body: JSON.stringify({ email: email })
+        body: JSON.stringify({ email: email, lang: lang })
       })
       .then(function (res) {
         if (res.ok || res.status === 409) {
-          // 409 = already subscribed — still show success
           form.querySelector('.form-row').style.display = 'none';
-          success.hidden = false;
+          // Show the success message matching current language
+          var successEl = document.getElementById('form-success-' + lang);
+          if (successEl) successEl.hidden = false;
         } else {
-          throw new Error('subscription failed');
+          throw new Error('signup failed');
         }
       })
       .catch(function () {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Subscribe';
+        submitBtn.textContent = lang === 'no' ? 'Abonner' : 'Subscribe';
         emailInput.style.outline = '2px solid #c9a84c';
         setTimeout(function () { emailInput.style.outline = ''; }, 2000);
       });
