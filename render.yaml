@@ -6,6 +6,8 @@ services:
     staticPublishPath: .
     pullRequestPreviewsEnabled: false
     domains:
+      - thlarsenpublishing.com
+      - www.thlarsenpublishing.com
       - thlarsenpublishing.no
       - www.thlarsenpublishing.no
     headers:

@@ -9,10 +9,10 @@
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="T.H. Larsen Publishing" />
-  <meta property="og:url" content="https://thlarsenpublishing.no" />
+  <meta property="og:url" content="https://thlarsenpublishing.com" />
   <meta property="og:title" content="T.H. Larsen Publishing — Ideas Worth Reading" />
   <meta property="og:description" content="Non-fiction, fiction, and specialist titles from Thor-Håkon Larsen." />
-  <meta property="og:image" content="https://thlarsenpublishing.no/assets/og/og_the-replacement-ladder.png" />
+  <meta property="og:image" content="https://thlarsenpublishing.com/assets/og/og_the-replacement-ladder.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="The Replacement Ladder — T.H. Larsen Publishing" />
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="T.H. Larsen Publishing — Ideas Worth Reading" />
   <meta name="twitter:description" content="Non-fiction, fiction, and specialist titles from Thor-Håkon Larsen." />
-  <meta name="twitter:image" content="https://thlarsenpublishing.no/assets/og/og_the-replacement-ladder.png" />
+  <meta name="twitter:image" content="https://thlarsenpublishing.com/assets/og/og_the-replacement-ladder.png" />
 
   <!-- Per-book OG images (used by book-specific share links) -->
   <!-- The Replacement Ladder: /assets/og/og_the-replacement-ladder.png -->
@@ -31,7 +31,15 @@
   <!-- Sfærene:                 /assets/og/og_sfaerene.png -->
   <!-- Vekterfaget:             /assets/og/og_vekterfaget.png -->
   <!-- AI for Øk.:              /assets/og/og_ai-for-okonomifunksjonen.png -->
-  <link rel="canonical" href="https://thlarsenpublishing.no/" />
+  <link rel="canonical" href="https://thlarsenpublishing.com/" />
+
+  <!-- Redirect .no → .com (canonical) -->
+  <script>
+  if (location.hostname.endsWith('.no')) {
+    location.replace('https://thlarsenpublishing.com' + location.pathname + location.search + location.hash);
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet" />
@@ -43,7 +51,7 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "T.H. Larsen Publishing",
-    "url": "https://thlarsenpublishing.no",
+    "url": "https://thlarsenpublishing.com",
     "description": "Independent publisher specializing in business, personal development, and Norwegian fiction",
     "founder": {"@type": "Person", "name": "T.H. Larsen"},
     "knowsAbout": ["Business books", "AI and automation", "Norwegian fiction", "Personal development"]
@@ -125,10 +133,10 @@
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "T.H. Larsen Publishing",
-    "url": "https://thlarsenpublishing.no",
+    "url": "https://thlarsenpublishing.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://thlarsenpublishing.no/?s={search_term_string}",
+      "target": "https://thlarsenpublishing.com/?s={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   }
@@ -469,7 +477,7 @@
       </nav>
       <p class="footer-legal">
         &copy; 2026 T.H. Larsen Publishing &middot;
-        <a href="https://thlarsenpublishing.no" target="_blank" rel="noopener">thlarsenpublishing.no</a>
+        <a href="https://thlarsenpublishing.com" target="_blank" rel="noopener">thlarsenpublishing.com</a>
         &middot; ISBN: <span class="t-en">Pending</span><span class="t-no">Under tildeling</span>
       </p>
     </div>
