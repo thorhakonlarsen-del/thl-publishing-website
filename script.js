@@ -100,23 +100,38 @@
   var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdG13YnV4eXpvZW9keXZ4dGppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzMTU1MDUsImV4cCI6MjA4Nzg5MTUwNX0.qSmnanAOiDhRm-cruF1BxgB2jm8aL44XLBI636i3Rvw';
 
   var form = document.getElementById('signup-form');
+  var formError = document.getElementById('form-error');
+
+  function showFormError(msg) {
+    if (formError) {
+      formError.textContent = msg;
+      formError.hidden = false;
+    }
+  }
+
+  function clearFormError() {
+    if (formError) {
+      formError.textContent = '';
+      formError.hidden = true;
+    }
+  }
 
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      clearFormError();
 
       var emailInput = form.querySelector('#email');
       var email = emailInput ? emailInput.value.trim() : '';
+      var lang = document.documentElement.lang || 'en';
 
       if (!email || !isValidEmail(email)) {
+        showFormError(lang === 'no' ? 'Vennligst oppgi en gyldig e-postadresse.' : 'Please enter a valid email address.');
         emailInput.focus();
-        emailInput.style.outline = '2px solid #c9a84c';
-        setTimeout(function () { emailInput.style.outline = ''; }, 1800);
         return;
       }
 
       var submitBtn = form.querySelector('button[type="submit"]');
-      var lang = document.documentElement.lang || 'en';
       submitBtn.disabled = true;
       submitBtn.textContent = lang === 'no' ? 'Abonnerer…' : 'Subscribing…';
 
@@ -133,7 +148,6 @@
       .then(function (res) {
         if (res.ok || res.status === 409) {
           form.querySelector('.form-row').style.display = 'none';
-          // Show the success message matching current language
           var successEl = document.getElementById('form-success-' + lang);
           if (successEl) successEl.hidden = false;
         } else {
@@ -143,8 +157,7 @@
       .catch(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = lang === 'no' ? 'Abonner' : 'Subscribe';
-        emailInput.style.outline = '2px solid #c9a84c';
-        setTimeout(function () { emailInput.style.outline = ''; }, 2000);
+        showFormError(lang === 'no' ? 'Noe gikk galt. Prøv igjen.' : 'Something went wrong. Please try again.');
       });
     });
   }
