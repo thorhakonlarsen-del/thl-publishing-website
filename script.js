@@ -122,7 +122,7 @@
       fetch('https://api.buttondown.email/v1/subscribers', {
         method: 'POST',
         headers: {
-          'Authorization': 'Token 6a2991c1-f8e1-48d1-8a26-e38ed48bef4c',
+          'Authorization': 'Token BUTTONDOWN_API_KEY',
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email: email })
