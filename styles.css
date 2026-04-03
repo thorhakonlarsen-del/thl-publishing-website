@@ -1065,18 +1065,24 @@ html[lang="no"] .t-en { display: none; }
 }
 @media (min-width: 768px) {
   .book-hero-inner {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 280px 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .book-hero-inner {
+    grid-template-columns: 320px 1fr;
   }
 }
 
 .book-hero-cover {
+  width: 100%;
   max-width: 280px;
   margin-inline: auto;
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,240,232,0.06);
 }
 @media (min-width: 768px) {
-  .book-hero-cover { max-width: 320px; }
+  .book-hero-cover { max-width: 100%; }
 }
 
 .book-hero-text {
