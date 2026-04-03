@@ -11,7 +11,12 @@
      --------------------------------------------------------------- */
   const header = document.getElementById('site-header');
 
+  /* Book pages set .scrolled in HTML to keep the header always dark.
+     Only apply scroll-toggling on pages where it starts without the class. */
+  var headerAlwaysScrolled = header && header.classList.contains('scrolled') && window.scrollY <= 40;
+
   function updateHeader() {
+    if (headerAlwaysScrolled) return;
     if (window.scrollY > 40) {
       header.classList.add('scrolled');
     } else {
