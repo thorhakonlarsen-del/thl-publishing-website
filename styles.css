@@ -706,7 +706,47 @@ p { max-width: 68ch; }
   margin-bottom: 1rem;
   max-width: 62ch;
 }
-.about-bio:last-child { margin-bottom: 0; }
+.about-bio:last-of-type { margin-bottom: 0; }
+
+.about-more {
+  margin-top: 1.25rem;
+  max-width: none;
+}
+.about-more a {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.about-more a:hover { color: var(--gold); }
+
+/* About detail page */
+.about-hero {
+  background: #f0ebe2;
+  border-bottom: 1px solid var(--border);
+  padding-top: calc(var(--nav-h) + clamp(3rem, 6vw, 5rem));
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+.about-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .about-hero-inner {
+    grid-template-columns: auto 1fr;
+  }
+}
+.about-hero .author-portrait-img {
+  width: clamp(180px, 22vw, 300px);
+}
+.about-hero .about-bio {
+  font-size: clamp(0.92rem, 1.6vw, 1.05rem);
+  max-width: 60ch;
+}
 
 /* ----------------------------------------------------------------
    9. EMAIL SIGNUP
